@@ -72,8 +72,8 @@ export function Ball(props: JSX.IntrinsicElements['mesh']) {
 
     const applyBallEffect = (e: ThreeEvent<MouseEvent>) => {
         const [x,y,z] = e.intersections[0].point.toArray();
-        api.
-        api.applyForce([0, 1000, 0], [x,y,z])
+        // api.
+        // api.applyForce([0, 1000, 0], [x,y,z])
     }
 
     return (

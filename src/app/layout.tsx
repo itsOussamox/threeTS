@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navbar from './components/Navbar'
 import Simulation from './components/Simulation'
+import CubeSim from './components/Cubes'
 
 
 export const metadata: Metadata = {
@@ -18,7 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en" className='m-0 p-0'>
       <body className="bg-gradient-to-l from-[#868F96] to-[#596164] w-screen h-screen">
-        <Simulation />
+        {/* <Simulation /> */}
+        <CubeSim />
         <Navbar />
         {children}
       </body>
