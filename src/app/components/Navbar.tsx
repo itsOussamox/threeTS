@@ -15,7 +15,7 @@ export default function Navbar() {
                 <Link href={'/scene'} className="h-full w-[2vw]">
                     <IoGameController className="h-full w-full" />
                 </Link>
-                <Link href={'/'} className="h-full w-[2vw]">
+                <Link href={'/trial'} className="h-full w-[2vw]">
                     <HiInformationCircle className="h-full w-full" />
                 </Link>
             </div>

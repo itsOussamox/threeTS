@@ -1,7 +1,7 @@
 'use client';
 import { Canvas, useFrame, useThree, extend, Object3DNode, useLoader } from "@react-three/fiber";
 import { useRef, useState, Suspense, useEffect, Ref} from "react";
-import { Environment, GradientTexture, OrbitControls, Plane, useHelper } from "@react-three/drei";
+import { Environment, GradientTexture, OrbitControls, PerspectiveCamera, Plane, useHelper } from "@react-three/drei";
 import { animated, useSpring } from "@react-spring/three";
 import { AxesHelper, DirectionalLightHelper, DoubleSide, Euler, SpotLightHelper } from "three";
 import { Ball, BigBox, SmallBox } from "./AniBox";
@@ -52,10 +52,14 @@ function TextRender(props: JSX.IntrinsicElements['mesh']) {
 }
 
 function Scene() {
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null!);
   const spotlightRef = useRef<THREE.SpotLight>(null!);
   useHelper(spotlightRef, SpotLightHelper, 'white')
+  useEffect(() => {
+  }, [])
   return (
     <>
+      <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 2, 15]} fov={45}/>
        <ambientLight intensity={1}/>
         <spotLight ref={spotlightRef} penumbra={0.1} position={[15, 8, -10]} intensity={10000} color={'#9A9BD3'}  castShadow/>
         {/* <directionalLight ref={lightRef} position={[15, 8, -10]} intensity={100} color={'#9A9BD3'} castShadow/> */}
@@ -75,7 +79,7 @@ function Scene() {
 
 export default function Simulation() {
     return (
-        <Canvas camera={{position: [0,5,5]}} shadows>
+        <Canvas shadows>
           <color attach='background' args={['#44476F']} />
           <Physics gravity={[0, -9.8, 0]} >
            <Scene />
